@@ -35,8 +35,8 @@ class ViewController: UIViewController {
   @IBOutlet var sceneView: ARSCNView!
   @IBOutlet weak var instructionLabel: UILabel!
 
-  private var imageConfiguration: ARImageTrackingConfiguration?
-
+  private var worldConfiguration: ARWorldTrackingConfiguration?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     sceneView.delegate = self
@@ -47,16 +47,17 @@ class ViewController: UIViewController {
     let scene = SCNScene()
     sceneView.scene = scene
     
-    setupImageDetection()
+    setupObjectDetection()
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
-    if let configuration = imageConfiguration {
+    if let configuration = worldConfiguration {
+      sceneView.debugOptions = .showFeaturePoints
       sceneView.session.run(configuration)
     }
-
+    
   }
 
   override func viewWillDisappear(_ animated: Bool) {
@@ -65,23 +66,19 @@ class ViewController: UIViewController {
     sceneView.session.pause()
   }
 
-  private func setupImageDetection() {
-    imageConfiguration = ARImageTrackingConfiguration()
-
-    guard let referenceImages = ARReferenceImage.referenceImages(
-      inGroupNamed: "AR Images", bundle: nil) else {
-          fatalError("Missing expected asset catalog resources.")
-      }
-    imageConfiguration?.trackingImages = referenceImages
-  }
-
   private func setupObjectDetection() {
-    // TODO: complete this function in the tutorial
+    worldConfiguration = ARWorldTrackingConfiguration()
+
+    guard let referenceObjects = ARReferenceObject.referenceObjects(
+      inGroupNamed: "AR Objects", bundle: nil) else {
+      fatalError("Missing expected asset catalog resources.")
+    }
+
+    worldConfiguration?.detectionObjects = referenceObjects
   }
 
 }
 
-// MARK: -
 extension ViewController: ARSessionDelegate {
   func session(_ session: ARSession, didFailWithError error: Error) {
     guard
@@ -110,7 +107,7 @@ extension ViewController: ARSessionDelegate {
         instructionLabel.text = "Not enough features detected, try moving around a bit more or turning on the lights."
       }
     case .normal:
-      instructionLabel.text = "Point the camera at a dinsoaur."
+      instructionLabel.text = "Point the camera at a Wilbur."
     case .notAvailable:
       instructionLabel.isHidden = false
       instructionLabel.text = "Camera tracking is not available."
@@ -118,64 +115,34 @@ extension ViewController: ARSessionDelegate {
   }
 }
 
-// MARK: -
 extension ViewController: ARSCNViewDelegate {
 
   func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
     DispatchQueue.main.async { self.instructionLabel.isHidden = true }
-    if let imageAnchor = anchor as? ARImageAnchor {
-      handleFoundImage(imageAnchor, node)
+    if let objectAnchor = anchor as? ARObjectAnchor {
+      handleFoundObject(objectAnchor, node)
     }
-  }
-
-  private func handleFoundImage(_ imageAnchor: ARImageAnchor, _ node: SCNNode) {
-    let name = imageAnchor.referenceImage.name!
-    print("you found a \(name) image")
-
-    let size = imageAnchor.referenceImage.physicalSize
-    if let videoNode = makeDinosaurVideo(size: size) {
-      node.addChildNode(videoNode)
-      node.opacity = 1
-    }
-  }
-
-  private func makeDinosaurVideo(size: CGSize) -> SCNNode? {
-    // 1
-    guard let videoURL = Bundle.main.url(forResource: "dinosaur",
-                                         withExtension: "mp4") else {
-      return nil
-    }
-
-    // 2
-    let avPlayerItem = AVPlayerItem(url: videoURL)
-    let avPlayer = AVPlayer(playerItem: avPlayerItem)
-    avPlayer.play()
-
-    // 3
-    NotificationCenter.default.addObserver(
-      forName: .AVPlayerItemDidPlayToEndTime,
-      object: nil,
-      queue: nil) { notification in
-        avPlayer.seek(to: .zero)
-        avPlayer.play()
-    }
-
-    // 4
-    let avMaterial = SCNMaterial()
-    avMaterial.diffuse.contents = avPlayer
-
-    // 5
-    let videoPlane = SCNPlane(width: size.width, height: size.height)
-    videoPlane.materials = [avMaterial]
-
-    // 6
-    let videoNode = SCNNode(geometry: videoPlane)
-    videoNode.eulerAngles.x = -.pi / 2
-    return videoNode
   }
 
   private func handleFoundObject(_ objectAnchor: ARObjectAnchor, _ node: SCNNode) {
-    // TODO: complete this function in the tutorial
+    // 1
+    let name = objectAnchor.referenceObject.name!
+    print("You found a \(name) object")
+
+    // 2
+    let text = SCNText(string: name, extrusionDepth: 0.1)
+    let material = SCNMaterial()
+    material.diffuse.contents = UIColor.red
+    text.materials = [material]
+    text.font = UIFont(name: "Helvetica", size: 1)
+    
+    let textNode = SCNNode()
+    textNode.scale = SCNVector3(x: 0.02, y: 0.01, z: 0.01)
+    textNode.geometry = text
+    textNode.position = node.position
+    textNode.position.y += 0.05
+    textNode.position.x -= 0.018
+    node.addChildNode(textNode)
   }
 }
 

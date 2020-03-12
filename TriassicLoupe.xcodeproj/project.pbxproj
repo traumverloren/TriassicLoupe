@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0A65A297210B8C1500F4ADE0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65A295210B8C1500F4ADE0 /* ViewController.swift */; };
-		0A65A298210B8C1500F4ADE0 /* DinsoaurFacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65A296210B8C1500F4ADE0 /* DinsoaurFacts.swift */; };
-		0A7E8F82212687B400A8B87A /* dinosaur.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0AC39B0D210D49B8006BF97E /* dinosaur.mp4 */; };
-		0A7E8F8421268BC400A8B87A /* dinosaur.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0AC39B0E210D4BA6006BF97E /* dinosaur.wav */; };
 		5C2901831F8F6DE700803663 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */; };
 		D2A5F2091F4A9144005CD714 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F2071F4A9144005CD714 /* Main.storyboard */; };
 		D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F20A1F4A9144005CD714 /* Assets.xcassets */; };
@@ -19,11 +16,8 @@
 
 /* Begin PBXFileReference section */
 		0A65A295210B8C1500F4ADE0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0A65A296210B8C1500F4ADE0 /* DinsoaurFacts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DinsoaurFacts.swift; sourceTree = "<group>"; };
-		0AC39B0D210D49B8006BF97E /* dinosaur.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = dinosaur.mp4; sourceTree = "<group>"; };
-		0AC39B0E210D4BA6006BF97E /* dinosaur.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dinosaur.wav; sourceTree = "<group>"; };
 		5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D2A5F2001F4A9144005CD714 /* TriassicLoupe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TriassicLoupe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2A5F2001F4A9144005CD714 /* wilbur-ar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "wilbur-ar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A5F2081F4A9144005CD714 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D2A5F20A1F4A9144005CD714 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2A5F20F1F4A9144005CD714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,7 +48,7 @@
 		D2A5F2011F4A9144005CD714 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D2A5F2001F4A9144005CD714 /* TriassicLoupe.app */,
+				D2A5F2001F4A9144005CD714 /* wilbur-ar.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,9 +58,6 @@
 			children = (
 				D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */,
 				0A65A295210B8C1500F4ADE0 /* ViewController.swift */,
-				0A65A296210B8C1500F4ADE0 /* DinsoaurFacts.swift */,
-				0AC39B0D210D49B8006BF97E /* dinosaur.mp4 */,
-				0AC39B0E210D4BA6006BF97E /* dinosaur.wav */,
 				D2A5F2071F4A9144005CD714 /* Main.storyboard */,
 				D2A5F20A1F4A9144005CD714 /* Assets.xcassets */,
 				5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */,
@@ -92,7 +83,7 @@
 			);
 			name = TriassicLoupe;
 			productName = MyRWTutorial;
-			productReference = D2A5F2001F4A9144005CD714 /* TriassicLoupe.app */;
+			productReference = D2A5F2001F4A9144005CD714 /* wilbur-ar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -134,11 +125,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A7E8F82212687B400A8B87A /* dinosaur.mp4 in Resources */,
 				D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */,
 				5C2901831F8F6DE700803663 /* LaunchScreen.storyboard in Resources */,
 				D2A5F2091F4A9144005CD714 /* Main.storyboard in Resources */,
-				0A7E8F8421268BC400A8B87A /* dinosaur.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,7 +138,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A65A298210B8C1500F4ADE0 /* DinsoaurFacts.swift in Sources */,
 				0A65A297210B8C1500F4ADE0 /* ViewController.swift in Sources */,
 				D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */,
 			);
@@ -283,13 +271,12 @@
 		D2A5F2131F4A9144005CD714 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = PG567LPL9M;
 				INFOPLIST_FILE = "$(SRCROOT)/TriassicLoupe/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.TriassicLoupetestssss;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "wilbur-ar";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -299,13 +286,12 @@
 		D2A5F2141F4A9144005CD714 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = PG567LPL9M;
 				INFOPLIST_FILE = "$(SRCROOT)/TriassicLoupe/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.TriassicLoupetestssss;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "wilbur-ar";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

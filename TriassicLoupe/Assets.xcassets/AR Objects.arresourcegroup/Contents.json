@@ -5,13 +5,7 @@
   },
   "resources" : [
     {
-      "filename" : "daruma_3.arobject"
-    },
-    {
-      "filename" : "daruma_doll.arobject"
-    },
-    {
-      "filename" : "daruma2.arobject"
+      "filename" : "big-daruma.arobject"
     }
   ]
 }
